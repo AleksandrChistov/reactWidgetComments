@@ -9,7 +9,15 @@ class WidgetComments extends React.Component {
   state = {
     comments: [
       {name: 'Мария', date: '01.10.2019', comment: 'Первый комментарий Марии.'}
-    ]
+    ],
+    valueName: 'Ваше имя',
+    valueComment: 'Комментарий...'
+  }
+
+  postComment(e) {
+    e.preventDefault();
+    console.log(this.state.valueName);
+    console.log(this.state.valueComment);
   }
 
   render() {
@@ -28,7 +36,8 @@ class WidgetComments extends React.Component {
                       </div>
                       <div className="comment-meta">
                         <cite className="comment-author" itemProp="creator">{data.name}</cite>
-                        <time className="comment-time" itemProp="datePublished" dateTime={data.date}>{data.date}</time>
+                        <time className="comment-time" itemProp="datePublished" 
+                        dateTime={data.date}>{data.date}</time>
                       </div>
                     </div>
                     <div className="comment-body">
@@ -45,15 +54,20 @@ class WidgetComments extends React.Component {
           <form action="#" method="post" className="comment-form">
             <p className="comment-form-author">
               <label htmlFor="author">
-                <input type="text" name="author" id="author" placeholder="Ваше имя" require="require"/>
+                <input type="text" name="author" id="author" placeholder="Ваше имя" 
+                onChange={(e) => this.setState({valueName: e.target.value})} require="require"/>
               </label>
             </p>
             <p className="comment-form-comment">
               <label htmlFor="comment">
-                <textarea name="comment" id="comment" cols="45" rows="8" placeholder="Комментарий..." require="require"></textarea>
+                <textarea name="comment" id="comment" cols="45" rows="8" 
+                placeholder={this.state.valueComment} require="require"
+                onChange={(e) => this.setState({valueComment: e.target.value})}></textarea>
               </label>
             </p>
-            <input type="submit" name="submit" id="submit" className="submit" value="Отправить комментарий"/>
+            <input type="submit" name="submit" id="submit" 
+            className="submit" value="Отправить комментарий" 
+            onClick={(e) => this.postComment(e)}/>
           </form>
         </div>
       </div>
