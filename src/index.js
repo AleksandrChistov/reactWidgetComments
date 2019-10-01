@@ -50,7 +50,7 @@ class WidgetComments extends React.Component {
             </p>
             <p className="comment-form-comment">
               <label htmlFor="comment">
-                <textarea name="comment" id="comment" cols="45" rows="8" placeholder="Комментарий" require="require"></textarea>
+                <textarea name="comment" id="comment" cols="45" rows="8" placeholder="Комментарий..." require="require"></textarea>
               </label>
             </p>
             <input type="submit" name="submit" id="submit" className="submit" value="Отправить комментарий"/>
