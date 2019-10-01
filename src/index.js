@@ -15,17 +15,30 @@ class WidgetComments extends React.Component {
     return (
       <div className="comments">
         <h2>Комментариев: {this.state.comments.length}</h2>
+        <ol className="comments-list">
           {
-            this.state.comments.map((date, i) => {
+            this.state.comments.map((data, i) => {
               return (
-                <div key={i}>
-                  <p><strong>Comment:</strong> {date.comment}</p>
-                  <p><strong>Name:</strong> {date.name}</p>
-                  <p><strong>Date:</strong> {date.date}</p>
-                </div>
+                <li key={i} className="li-comment">
+                  <div className="comment-box">
+                    <div className="comment-header">
+                      <div className="comment-avatar">
+                        <img src="" alt={"Аватар-" + (i + 1)} />
+                      </div>
+                      <div className="comment-meta">
+                        <cite className="comment-author" itemProp="creator">{data.name}</cite>
+                        <time className="comment-time" itemProp="datePublished" dateTime={data.date}>{data.date}</time>
+                      </div>
+                    </div>
+                    <div className="comment-body">
+                      <p className="comment-text">{data.comment}</p>
+                    </div>
+                  </div>
+                </li>
               )
             })
           }
+        </ol>
       </div>
     );
   }
