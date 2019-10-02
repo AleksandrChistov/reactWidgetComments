@@ -53,7 +53,8 @@ export default class WidgetComments extends React.Component {
     let state = this.state.comments;
     // Проверка: если поля не пустые - добавляем в массив новый коммент
     if (name.length > 0 && comment.length > 0) {
-      state.push({name, date: '01.10.2019', comment});
+      let d = new Date().toLocaleString();
+      state.push({name, date: d, comment});
       this.setState({state, valueName: '', valueComment: '', button: 'submit-disabled'});
     }
   }
