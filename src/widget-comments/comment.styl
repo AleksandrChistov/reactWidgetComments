@@ -19,6 +19,7 @@
   color #adb3c5
 
 .comment-box
+  position relative
   width 600px
   padding 20px
   margin-bottom 20px
@@ -80,3 +81,23 @@
   border 0
   &:active, &:focus
     outline none
+  
+.delete-comment
+  position absolute
+  right 0
+  bottom 0
+  width 180px
+  height 30px
+  font-weight 500
+  font-size 12px
+  font-family inherit
+  text-transform uppercase
+  background-color #ebebeb
+  color #cfcfcf
+  border-radius 5px
+  border 0
+  &:active, &:focus
+    outline none
+  &:hover
+    cursor pointer
+    background-color #ff5d5d
