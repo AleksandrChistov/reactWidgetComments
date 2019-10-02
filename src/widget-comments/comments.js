@@ -7,7 +7,7 @@ export default class WidgetComments extends React.Component {
   // исходное состояние нашего приложения
   state = {
     comments: [
-      {name: 'Мария', date: '01.10.2019', comment: 'Первый комментарий Марии.'}
+
     ],
     valueName: '',
     valueComment: '',
@@ -59,12 +59,21 @@ export default class WidgetComments extends React.Component {
     }
   }
 
+  deleteComment(i) {
+    console.log(i);
+    let comments = this.state.comments.concat();
+    console.log(comments);
+    comments.splice(i, 1)
+    console.log(comments);
+    this.setState({comments});
+  }
+
   // Рендерим форму отправки комментариев
   render() {
     return (
       <React.Fragment>
         <CreateComment qtСomments={this.state.comments.length} // Компонент - комментарии
-        comments={this.state.comments}/>
+        comments={this.state.comments} onClick={this.deleteComment.bind(this)}/>
         <div className="comment-respond">
           <h2>Добавить комментарий</h2>
           <form  onSubmit={this.postComment.bind(this)} action="#" method="post" className="comment-form">

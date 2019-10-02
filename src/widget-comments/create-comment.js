@@ -24,8 +24,8 @@ export default class CreateComment extends React.Component{
                   <div className="comment-body">
                     <p className="comment-text">{data.comment}</p>
                   </div>
-                  <button aria-label="Кнопка удаления комментария" 
-                  className="delete-comment">Удалить комментарий</button>
+                  <button aria-label="Кнопка удаления комментария" className="delete-comment" 
+                  onClick={() => this.props.onClick(i)}>Удалить комментарий</button>
                 </div>
               )
             })
