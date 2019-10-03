@@ -13,7 +13,7 @@ export default class WidgetComments extends React.Component {
   }
 
   // Меняем значение полей Имя или Комментарий, в зависимости от event name
-  changeText(e) {
+  changeText = e => {
     const name = e.target.name;
     this.setState({[name]: e.target.value});
     // Если поле стало пустым - делаем кнопку неактивной
@@ -44,7 +44,7 @@ export default class WidgetComments extends React.Component {
   }
 
   // Запускается при клике на кнопку
-  postComment(e) {
+  postComment = e => {
     e.preventDefault();
     let name = this.state.valueName;
     let comment = this.state.valueComment;
@@ -58,8 +58,8 @@ export default class WidgetComments extends React.Component {
     }
   }
 
-  deleteComment(i) {
-    let comments = this.state.comments.concat();
+  deleteComment = i => {
+    let comments = this.state.comments;
     comments.splice(i, 1)
     this.setState({comments});
   }
@@ -69,15 +69,15 @@ export default class WidgetComments extends React.Component {
     return (
       <React.Fragment>
         <CreateComment qtСomments={this.state.comments.length} // Компонент - комментарии
-        comments={this.state.comments} onClick={this.deleteComment.bind(this)}/>
+        comments={this.state.comments} onClick={this.deleteComment}/>
         <div className="comment-respond">
           <h2>Добавить комментарий</h2>
-          <form  onSubmit={this.postComment.bind(this)} action="#" method="post" className="comment-form">
+          <form  onSubmit={this.postComment} action="#" method="post" className="comment-form">
             <p className="comment-form-author">
               <label htmlFor="author">
                 <input type="text" name="valueName" id="author" placeholder="Ваше имя" 
                 value={this.state.valueName}
-                onChange={this.changeText.bind(this)} required="required"/>
+                onChange={this.changeText} required="required"/>
               </label>
             </p>
             <p className="comment-form-comment">
@@ -85,7 +85,7 @@ export default class WidgetComments extends React.Component {
                 <textarea name="valueComment" id="comment" cols="45" rows="8" 
                 placeholder="Комментарий..." required="required"
                 value={this.state.valueComment}
-                onChange={this.changeText.bind(this)}></textarea>
+                onChange={this.changeText}></textarea>
               </label>
             </p>
             <input type="submit" name="submit" id="submit" 
