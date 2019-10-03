@@ -6,9 +6,7 @@ import commentsStyle from './comment.styl';
 export default class WidgetComments extends React.Component {
   // исходное состояние нашего приложения
   state = {
-    comments: [
-
-    ],
+    comments: this.props.arrComments,
     valueName: '',
     valueComment: '',
     button: 'submit-disabled'
@@ -56,15 +54,13 @@ export default class WidgetComments extends React.Component {
       let d = new Date().toLocaleString();
       state.push({name, date: d, comment});
       this.setState({state, valueName: '', valueComment: '', button: 'submit-disabled'});
+      localStorage.setItem('comments', JSON.stringify(state));
     }
   }
 
   deleteComment(i) {
-    console.log(i);
     let comments = this.state.comments.concat();
-    console.log(comments);
     comments.splice(i, 1)
-    console.log(comments);
     this.setState({comments});
   }
 

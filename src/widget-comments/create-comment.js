@@ -1,14 +1,12 @@
 import React from 'react';
 
-// Компонент выводит сами комментарии на страницы
-export default class CreateComment extends React.Component{
-  render() {
-    return (
+// Компонент выводит комментарии на страницы
+export default props => (
       <div className="comments">
-        <h2>Комментариев: {this.props.qtСomments}</h2>
+        <h2>Комментариев: {props.qtСomments}</h2>
         <div className="comments-list">
           {
-            this.props.comments.map((data, i) => {
+            props.comments.map((data, i) => {
               return (
                 <div key={i} className="comment-box">
                   <div className="comment-header">
@@ -25,7 +23,7 @@ export default class CreateComment extends React.Component{
                     <p className="comment-text">{data.comment}</p>
                   </div>
                   <button aria-label="Кнопка удаления комментария" className="delete-comment" 
-                  onClick={() => this.props.onClick(i)}>Удалить комментарий</button>
+                  onClick={() => props.onClick(i)}>Удалить комментарий</button>
                 </div>
               )
             })
@@ -33,5 +31,3 @@ export default class CreateComment extends React.Component{
         </div>
       </div>
     )
-  }
-}
