@@ -48,7 +48,7 @@ export default class WidgetComments extends React.Component {
     e.preventDefault();
     let name = this.state.valueName;
     let comment = this.state.valueComment;
-    let comments = this.state.comments;
+    let comments = this.state.comments.concat();
     // Проверка: если поля не пустые - добавляем в массив новый коммент
     if (name.length > 0 && comment.length > 0) {
       let d = new Date().toLocaleString();
@@ -61,7 +61,7 @@ export default class WidgetComments extends React.Component {
 
   // При клике на кнопку "Удалить" - удаляем комментарий из state и localStorage
   deleteComment = i => {
-    let comments = this.state.comments;
+    let comments = this.state.comments.concat();
     comments.splice(i, 1)
     this.setState({comments});
     localStorage.setItem('comments', JSON.stringify(comments));
