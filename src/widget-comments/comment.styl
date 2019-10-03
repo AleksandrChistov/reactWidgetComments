@@ -51,36 +51,30 @@
   &:active, &:focus
     outline none
 
-.submit
+.comment-text
+  white-space pre-wrap
+
+.submit, .submit-disabled
   width 240px
   height 45px
   font-weight 500
   font-size 14px
   font-family inherit
   text-transform uppercase
-  background-color #4376de
   color #fff
   border-radius 5px
   border 0
   &:active, &:focus
     outline none
+
+.submit
+  background-color #4376de
   &:hover
     cursor pointer
     background-color #1d57ce
 
 .submit-disabled
-  width 240px
-  height 45px
-  font-weight 500
-  font-size 14px
-  font-family inherit
-  text-transform uppercase
   background-color #e0e0e0
-  color #fff
-  border-radius 5px
-  border 0
-  &:active, &:focus
-    outline none
   
 .delete-comment
   position absolute
@@ -92,8 +86,8 @@
   font-size 12px
   font-family inherit
   text-transform uppercase
-  background-color #ebebeb
-  color #cfcfcf
+  background-color #e4e4e4
+  color #fff
   border-radius 5px
   border 0
   &:active, &:focus

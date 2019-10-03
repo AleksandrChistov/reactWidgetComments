@@ -48,27 +48,30 @@ export default class WidgetComments extends React.Component {
     e.preventDefault();
     let name = this.state.valueName;
     let comment = this.state.valueComment;
-    let state = this.state.comments;
+    let comments = this.state.comments;
     // Проверка: если поля не пустые - добавляем в массив новый коммент
     if (name.length > 0 && comment.length > 0) {
       let d = new Date().toLocaleString();
-      state.push({name, date: d, comment});
-      this.setState({state, valueName: '', valueComment: '', button: 'submit-disabled'});
-      localStorage.setItem('comments', JSON.stringify(state));
+      // Обновляем state и localStorage
+      comments.push({name, date: d, comment});
+      this.setState({comments, valueName: '', valueComment: '', button: 'submit-disabled'});
+      localStorage.setItem('comments', JSON.stringify(comments));
     }
   }
 
+  // При клике на кнопку "Удалить" - удаляем комментарий из state и localStorage
   deleteComment = i => {
     let comments = this.state.comments;
     comments.splice(i, 1)
     this.setState({comments});
+    localStorage.setItem('comments', JSON.stringify(comments));
   }
 
   // Рендерим форму отправки комментариев
   render() {
     return (
       <React.Fragment>
-        <CreateComment qtСomments={this.state.comments.length} // Компонент - комментарии
+        <CreateComment qtСomments={this.state.comments.length} // Компонент - список комментариев
         comments={this.state.comments} onClick={this.deleteComment}/>
         <div className="comment-respond">
           <h2>Добавить комментарий</h2>

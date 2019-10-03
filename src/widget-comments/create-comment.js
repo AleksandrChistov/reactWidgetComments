@@ -1,12 +1,15 @@
 import React from 'react';
 
-// Компонент выводит комментарии на страницы
+// Компонент выводит комментарии на страницу
 export default props => (
       <div className="comments">
         <h2>Комментариев: {props.qtСomments}</h2>
         <div className="comments-list">
           {
             props.comments.map((data, i) => {
+              // Преобразование даты для атрибута datetime
+              let d = data.date;
+              d = d.split(',')[0].split('.').reverse().join("-");
               return (
                 <div key={i} className="comment-box">
                   <div className="comment-header">
@@ -16,7 +19,7 @@ export default props => (
                     <div className="comment-meta">
                       <cite className="comment-author" itemProp="creator">{data.name}</cite>
                       <time className="comment-time" itemProp="datePublished" 
-                      dateTime={data.date}>{data.date}</time>
+                      dateTime={d}>{data.date}</time>
                     </div>
                   </div>
                   <div className="comment-body">

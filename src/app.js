@@ -7,7 +7,7 @@ export default () => {
   let arrComments = JSON.parse(localStorage.getItem('comments'));
   return (
     <div className="comments-area">
-      <WidgetComments arrComments={arrComments}/>
+      <WidgetComments arrComments={arrComments || []}/>
     </div>
   )
 }
