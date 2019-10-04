@@ -54,7 +54,7 @@
 .comment-text
   white-space pre-wrap
 
-.submit, .submit-disabled
+.submit
   width 240px
   height 45px
   font-weight 500
@@ -72,9 +72,9 @@
   &:hover
     cursor pointer
     background-color #1d57ce
-
-.submit-disabled
-  background-color #e0e0e0
+  &:disabled
+    cursor not-allowed
+    background-color #e0e0e0
   
 .delete-comment
   position absolute

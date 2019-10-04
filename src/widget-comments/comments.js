@@ -9,7 +9,7 @@ export default class WidgetComments extends React.Component {
     comments: this.props.arrComments,
     valueName: '',
     valueComment: '',
-    button: 'submit-disabled'
+    btnDisabled: true
   }
 
   // Меняем значение полей Имя или Комментарий, в зависимости от event name
@@ -18,7 +18,7 @@ export default class WidgetComments extends React.Component {
     this.setState({[name]: e.target.value});
     // Если поле стало пустым - делаем кнопку неактивной
     if (e.target.value === '') {
-      this.setState({button: 'submit-disabled'});
+      this.setState({btnDisabled: true});
       return null;
     }
     // Запускаем валидатор
@@ -39,7 +39,7 @@ export default class WidgetComments extends React.Component {
   // Если поле не пустое - делаем кнопку активной
   buttonActive(name) {
     if (name !== '') {
-      this.setState({button: 'submit'});
+      this.setState({btnDisabled: false});
     }
   }
 
@@ -54,7 +54,7 @@ export default class WidgetComments extends React.Component {
       let d = new Date().toLocaleString();
       // Обновляем state и localStorage
       comments.push({name, date: d, comment});
-      this.setState({comments, valueName: '', valueComment: '', button: 'submit-disabled'});
+      this.setState({comments, valueName: '', valueComment: '', btnDisabled: true});
       localStorage.setItem('comments', JSON.stringify(comments));
     }
   }
@@ -92,7 +92,7 @@ export default class WidgetComments extends React.Component {
               </label>
             </p>
             <input type="submit" name="submit" id="submit" 
-            className={this.state.button} value="Отправить комментарий"/>
+            className='submit' value="Отправить комментарий" disabled={this.state.btnDisabled}/>
           </form>
         </div>
       </React.Fragment>
